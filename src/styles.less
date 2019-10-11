@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+@import "config.less";
+@color-gray_light: #cbe2fdfb; 
+body {
+   background: @color-gray_light;
+   background-image: url("/assets/images/im.jpg");
+   background-size: 100%;
+}
+
+a {
+   font-size: 14pt;
+}
+nav {
+  margin: 0px auto 0;
+  width: 788px;
+  height: 45px;
+  .border;
+  .shadow;
+    ul {
+      padding: 0;
+      margin: 0;
+      li {
+        display: inline;
+        a {
+          text-decoration: none;
+          display: inline-block;
+          float: left;
+          width: 156px;
+          height: 45px;
+          text-align: center;
+          line-height: 45px;
+          .textcolor(#000000); // You can change this line
+          .divider;
+          .gradient;
+          &:hover {
+            .hovereffect;
+          }
+        }
+      }
+      li:first-child a {
+        border-left: none;
+      }
+      li:last-child a {
+        border-right: none;
+      }
+    }
+  }

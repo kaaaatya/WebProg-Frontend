@@ -8,7 +8,10 @@ import { InfoComponent } from './info/info.component';
 import { BookComponent } from './book/book.component';
 import { AuthorComponent } from './author/author.component';
 import { CollectionComponent } from './collection/collection.component';
-
+import { BooksService } from './book/book.service'; 
+import { HttpClientModule } from '@angular/common/http'; 
+import { FormsModule } from '@angular/forms';
+ 
 const appRoutes: Routes = [
   { 
     path: 'home', 
@@ -49,6 +52,8 @@ const appRoutes: Routes = [
     CollectionComponent
   ],
   imports: [
+    FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
@@ -56,7 +61,7 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [BooksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

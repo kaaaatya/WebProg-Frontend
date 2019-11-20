@@ -1,1 +1,29 @@
-<p>book works!</p>
+<label>Автор книги: </label>
+<input type="text" class="form-control" [(ngModel)]="AuthorName" />
+<label> Название книги: </label>
+<input type="text" class="form-control" [(ngModel)]="BookName" />
+<label> Год издания: </label>
+<input type="text" class="form-control" [(ngModel)]="PublishingYear" />
+<button class="bttn add" (click)="addBook()">Добавить книгу</button>
+<table class="list-group">
+  <tr class="list-group-item" *ngFor="let books of arrayOfBook">
+    <td class="AuthorName">
+      <h4>{{ books.AuthorName }}</h4>
+    </td>
+    <td class="BookName">
+      <h4>{{ books.BookName }}</h4>
+    </td>
+    <td class="PublishingYear">
+      <h4>{{ books.PublishingYear }}</h4>
+    </td>
+    <td class="ChangeBook">
+      <h4><button class="bttn chng" (click)="setNewYear(books)">Изменить книгу</button></h4>
+    </td>
+    <td class="SaveBook">
+      <h4><button class="bttn chng" (click)="setNewBook(books)">Сохранить изменения</button></h4>
+    </td>
+    <td class="DelBook">
+      <h4><button class="bttn del" (click)="delBook(books.BookId)">Удалить книгу</button></h4>
+    </td>
+  </tr>
+</table>

@@ -11,6 +11,10 @@ import { CollectionComponent } from './collection/collection.component';
 import { BooksService } from './book/book.service'; 
 import { HttpClientModule } from '@angular/common/http'; 
 import { FormsModule } from '@angular/forms';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserService } from './shared/user.service';
  
 const appRoutes: Routes = [
   { 
@@ -39,6 +43,7 @@ const appRoutes: Routes = [
     data: { title: 'Коллекция' }
   },
   
+  
   //{ path: '**', component: PageNotFoundComponent }
 ];
 
@@ -49,7 +54,8 @@ const appRoutes: Routes = [
     InfoComponent,
     BookComponent,
     AuthorComponent,
-    CollectionComponent
+    CollectionComponent,
+    SignUpComponent
   ],
   imports: [
     FormsModule,
@@ -59,9 +65,11 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
-  providers: [BooksService],
+  providers: [BooksService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

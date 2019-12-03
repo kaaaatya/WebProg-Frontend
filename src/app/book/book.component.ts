@@ -21,7 +21,6 @@ export class BookComponent {
   arrayOfBook: ArrayOfBook[] = [];
   constructor(private booksService: BooksService) {
     this.LoadBooks();
-
   }
   LoadBooks() {
     this.booksService.getBooks().subscribe((arrayOfBook: ArrayOfBook[]) => {
@@ -32,11 +31,12 @@ export class BookComponent {
   addBook() {
     this.booksService.addBook(this.AuthorName, this.BookName, this.PublishingYear)
       .subscribe((arrayOfBook: ArrayOfBook[]) => {
-        console.log(this.arrayOfBook);
+        this.LoadBooks();
       }),
     this.BookName = '';
     this.AuthorName = '';
     this.PublishingYear = 0;
+    this.LoadBooks();
   }
   setNewYear(books: ArrayOfBook) {
     console.log("compon change")
@@ -55,8 +55,8 @@ export class BookComponent {
   }
 
   delBook(BookId: number) {
-    console.log("compon delete")
-    this.booksService.delBook(BookId).subscribe(data=>console.log(data))
+    console.log("compon delete");
+    this.booksService.delBook(BookId).subscribe(data=>this.LoadBooks());  
   }
 }
 

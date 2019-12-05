@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../shared/user.model';
+import { User } from '../../shared/user.model';
 import { NgForm } from '@angular/forms';
-import { UserService } from '../shared/user.service';
+import { UserService } from '../../shared/user.service';
 import { ToastrService } from 'ngx-toastr'
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,6 +13,7 @@ import { ToastrService } from 'ngx-toastr'
 export class SignUpComponent implements OnInit {
   user : User;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  isLoginError: boolean = false;
 
   constructor(private userService: UserService, private toastr: ToastrService) { }
 

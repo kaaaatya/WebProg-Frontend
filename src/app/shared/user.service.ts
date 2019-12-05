@@ -27,4 +27,7 @@ export class UserService {
     var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
     return this.http.post(this.rootUrl + '/token', data, { headers: reqHeader });
   }
+  getUserClaims(){
+    return  this.http.get(this.rootUrl+'/api/GetUserClaims');
+   }
 }

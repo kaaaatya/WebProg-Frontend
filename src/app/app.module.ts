@@ -19,12 +19,14 @@ import { UserComponent } from './user/user.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home.component';
+import { FilesComponent } from './files/files.component';
+import { FileSelectDirective } from 'ng2-file-upload';
+import { HttpModule } from '@angular/http';
  
 const appRoutes: Routes = [
   { 
     path: 'home', 
     component: LandingComponent,
-    canActivate:[AuthGuard], 
     data: { title: 'Главная' } 
   },
   { 
@@ -32,6 +34,13 @@ const appRoutes: Routes = [
     component: InfoComponent,
     canActivate:[AuthGuard], 
     data: { title: 'О сайте' }
+  },
+  
+  { 
+    path: 'files',   
+    component: FilesComponent,
+    canActivate:[AuthGuard], 
+    data: { title: 'Файлы' }  
   },
   { 
     path: 'book',  
@@ -42,7 +51,6 @@ const appRoutes: Routes = [
   { 
     path: 'author',  
     component: AuthorComponent,
-    canActivate:[AuthGuard], 
     data: { title: 'Автор' }
   },
   { 
@@ -60,7 +68,7 @@ const appRoutes: Routes = [
     path: 'login', 
     component: UserComponent,
     children: [{ path: '', component: SignInComponent }]
-  }    
+  }      
 ];
 
 @NgModule({
@@ -75,7 +83,9 @@ const appRoutes: Routes = [
     SignInComponent,
     UserComponent,
     SignInComponent,
-    HomeComponent
+    HomeComponent,
+    FilesComponent,
+    FileSelectDirective
   ],
   imports: [
     FormsModule,
@@ -87,7 +97,8 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpModule
   ],
   providers: [BooksService, UserService, AuthGuard],
   bootstrap: [AppComponent]

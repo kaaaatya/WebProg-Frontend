@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from './book.service';
+import { Book } from '../shared/book.model';
 
 interface ArrayOfBook {
   BookId: number;
@@ -22,6 +23,8 @@ export class BookComponent {
   constructor(private booksService: BooksService) {
     this.LoadBooks();
   }
+  books:Book[];
+  text: string;
   LoadBooks() {
     this.booksService.getBooks().subscribe((arrayOfBook: ArrayOfBook[]) => {
       this.arrayOfBook = arrayOfBook;
@@ -58,5 +61,16 @@ export class BookComponent {
     console.log("compon delete");
     this.booksService.delBook(BookId).subscribe(data=>this.LoadBooks());  
   }
-}
 
+  getResult(text: string) {
+    if(text == "") this.booksService.getBooks().subscribe((arrayOfBook: ArrayOfBook[]) => {
+      this.arrayOfBook = arrayOfBook;
+      console.log(this.arrayOfBook);
+    });
+    else this.booksService.getResult(text).subscribe((arrayOfBook: ArrayOfBook[]) => {
+      this.arrayOfBook = arrayOfBook;
+      console.log(this.arrayOfBook);
+    });
+    
+  }
+}

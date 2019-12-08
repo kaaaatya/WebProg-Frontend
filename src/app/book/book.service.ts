@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'; 
-import { HttpClient } from '@angular/common/http'; 
+import { HttpClient, HttpHeaders } from '@angular/common/http'; 
+import { Observable } from 'rxjs';
 @Injectable()
 
 export class BooksService { 
@@ -29,5 +30,13 @@ export class BooksService {
         console.log(prom);
         return prom;
     }
+
+    getResult(text: string): Observable<any> {
+        const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+        const data: any = {
+        "text": text
+        };
+        return this.http.post(`https://localhost:44393/api/Search/?text=` + text, <JSON>data, httpOptions)
+      }
 
 }

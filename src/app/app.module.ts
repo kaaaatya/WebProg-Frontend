@@ -51,6 +51,7 @@ const appRoutes: Routes = [
   { 
     path: 'author',  
     component: AuthorComponent,
+    canActivate:[AuthGuard], 
     data: { title: 'Автор' }
   },
   { 

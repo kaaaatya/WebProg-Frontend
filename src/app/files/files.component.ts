@@ -91,7 +91,7 @@ export class FilesComponent implements OnInit {
                     data => {
                         this.uploadResult = data;
                         this.errorMessage = "";
-                        this.getAllFiles();
+                        this.uploadResult = this.getAllFiles();  
                     },
                     err => {
                         console.error(err);

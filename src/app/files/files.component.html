@@ -3,10 +3,11 @@
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
   integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<p></p>
 
 <div class="my_box_files">
   <div class="sidebar">
-    <h1 style="color: white">Загрузка файлов</h1>
+    <h1 style="color: rgb(0, 0, 0)">Загрузка файлов</h1>
     <input #fileUpload type="file" (change)="fileChangeEvent($event)" /><br />
     <button type="button" (click)="upload()">Загрузить</button>
     <button type="button" (click)="cancelUpload()">Отмена</button>
@@ -17,7 +18,7 @@
   </div>
   <div class="content_files">
     <div>
-      <h1 style="color: white">Скачивание файлов</h1>
+      <h1 style="color: rgb(0, 0, 0)">Скачивание файлов</h1>
     </div>
     <button type="button" (click)="getAllFiles()">Все файлы</button>
     <div class="right_content">

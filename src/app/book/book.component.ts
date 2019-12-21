@@ -15,7 +15,8 @@ interface ArrayOfBook {
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.less']
 })
-export class BookComponent {
+
+export class BookComponent implements OnInit{
   BookName: string = ' ';
   AuthorName: string = ' ';
   PublishingYear: number = 0;
@@ -25,13 +26,16 @@ export class BookComponent {
     // this.LoadBooks();
     this.ws.onopen = () => {
       this.setStatus('ONLINE');
+      this.LoadBooks();
       this.ws.onmessage = (response) => {
-          this.toastr.success(response.data);
-        this.printMessage(response.data);
-        this.LoadBooks();
+        this.toastr.success(response.data);
+        this.printMessage(response.data);  
       };
     };
+    this.booksService.ngOnInit();
+
   }
+  
   private sub = document.getElementById('submit');
   private ws = new WebSocket('ws://localhost:3000');
   books:Book[];
@@ -40,12 +44,13 @@ export class BookComponent {
     console.log(value)
   }
   printMessage(value) {
-    this.toastr.success('User login successful');      
+    this.toastr.success('Hello!'); 
     console.log(value);
   }
   SendMessage() {   
-    console.log("I'm is Admin and i send message!");
-    this.ws.send('isUpgrade');
+    console.log("Take this message from me!");
+    this.ws.send('isUpgrade');   
+    
   }
   LoadBooks() {
     this.booksService.getBooks().subscribe((arrayOfBook: ArrayOfBook[]) => {
@@ -66,6 +71,7 @@ export class BookComponent {
     this.AuthorName = '';
     this.PublishingYear = 0;
     this.LoadBooks();
+    this.SendMessage();
   }
   setNewYear(books: ArrayOfBook) {
     console.log("compon change")

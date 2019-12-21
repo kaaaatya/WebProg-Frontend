@@ -6,7 +6,7 @@
 <input type="text" class="form-control" [(ngModel)]="PublishingYear" />
 <label> Год издания: </label>
 <p></p>
-<button [disabled] type="submit" class="btn btn-lg btn-block btn-info" (click)="SendMessage()"></button>
+<button [disabled] type="submit" class="btn btn-lg btn-block btn-info" (click)="SendMessage()">Сообщение</button>
 <button class="bttn add" (click)="addBook()">Добавить книгу</button>
 <table class="list-group">
   <tr class="list-group-item" *ngFor="let books of arrayOfBook">
